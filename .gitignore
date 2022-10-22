@@ -1,0 +1,15 @@
+.DS_Store
+
+.idea/
+.vs/
+.vscode/
+.nova/
+.fleet/
+
+node_modules/
+
+package-lock.json
+yarn-error.log
+
+dist/
+.next/

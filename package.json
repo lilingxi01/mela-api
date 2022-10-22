@@ -1,0 +1,34 @@
+{
+  "name": "mela-api",
+  "version": "0.1.0",
+  "description": "A simple, elegant, yet powerful handler wrapper for Next.js API routing.",
+  "scripts": {
+    "build": "rm -rf dist && tsup src",
+    "dev": "rm -rf dist && tsup src --watch",
+    "version": "npm version"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "private": false,
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@taci-tech/eslint-config": "^0.0.3",
+    "@types/react": "18.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "tsup": "^6.2.2",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "next": "^12.3.1"
+  }
+}
