@@ -2,7 +2,7 @@
 <a href="https://mela.lingxi.li/">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/e996f5f0-8918-45b4-a96d-da375a95bd00/HD">
-  <img alt="Mela API Logo" width="146" src="https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/31f6a568-f1e3-4733-b922-ae16b2f40f00/HD">
+  <img alt="Mela API Logo" width="154" src="https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/31f6a568-f1e3-4733-b922-ae16b2f40f00/HD">
 </picture>
 </a>
 </sub></h1>
@@ -37,10 +37,10 @@ import { apiHandler, ApiCommonResponse, ApiResponse } from 'mela-api';
 // E.g. `param` for parameters, and `query` for query strings.
 // Check Next.js API documentation for more details.
 type ReqModel = {
-    query: {
-        // Example: Your query parameter.
-        exampleQuery: string;
-    },
+  query: {
+    // Example: Your query parameter.
+    exampleQuery: string;
+  },
 };
 
 // `string[]` for GET, `null` for POST.
@@ -48,21 +48,21 @@ type ResModel = string[] | null;
 
 // `async` is optional.
 export default apiHandler<ReqModel, ResModel>(async (req, res) => {
-    // Unwrap the query parameter confidently with typing.
-    const { exampleQuery } = req.query;
-    // Your common logic (e.g. auth handling)...
-    if (req.method === 'GET') {
-        // Your GET logic...
-        // Then return an OK response with data.
-        return ApiResponse.ok(['Hello', 'World']);
-    } else if (req.method === 'POST') {
-        // Your POST logic...
-        // Then simply return an OK response (based on your logic).
-        return ApiResponse.ok();
-    }
-    // When it is outside of your processing logic,
-    // it is a METHOD_NOT_ALLOWED response.
-    return ApiCommonResponse.METHOD_NOT_ALLOWED;
+  // Unwrap the query parameter confidently with typing.
+  const { exampleQuery } = req.query;
+  // Your common logic (e.g. auth handling)...
+  if (req.method === 'GET') {
+    // Your GET logic...
+    // Then return an OK response with data.
+    return ApiResponse.ok(['Hello', 'World']);
+  } else if (req.method === 'POST') {
+    // Your POST logic...
+    // Then simply return an OK response (based on your logic).
+    return ApiResponse.ok();
+  }
+  // When it is outside of your processing logic,
+  // it is a METHOD_NOT_ALLOWED response.
+  return ApiCommonResponse.METHOD_NOT_ALLOWED;
 });
 ```
 
