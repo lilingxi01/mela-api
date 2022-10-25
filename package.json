@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "A simple, elegant, yet powerful handler wrapper for Next.js API routing.",
   "scripts": {
+    "dev": "pnpm -F docs dev",
+    "build:docs": "pnpm -F docs build",
     "build": "pnpm -F mela-api build"
   },
   "keywords": [],
