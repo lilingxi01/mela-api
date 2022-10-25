@@ -1,4 +1,14 @@
-# 🍓 Mela - A Sweet API Handler (for Next.js)
+<h1>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/e996f5f0-8918-45b4-a96d-da375a95bd00/HD">
+  <img alt="Mela API Logo" width="160" src="https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/31f6a568-f1e3-4733-b922-ae16b2f40f00/HD">
+</picture>
+<sup>&nbsp;&nbsp;&nbsp;A Sweet API Handler for Next.js</sup>
+</h1>
+
+[Documentation](https://mela.lingxi.li)
+
+## What is Mela?
 
 A simple, elegant, yet powerful API handler wrapper for Next.js API routing. It is response-oriented, so it allows you to easily handle errors and return responses in a consistent way.
 
