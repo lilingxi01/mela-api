@@ -55,6 +55,9 @@ export const ApiResponse = {
 };
 
 export const ApiCommonResponse = {
+  MISSING_QUERY: ApiResponse.error(422, 'Missing query parameter'),
+  MISSING_BODY: ApiResponse.error(422, 'Missing body parameter'),
+  MISSING_HEADER: ApiResponse.error(422, 'Missing header parameter'),
   METHOD_NOT_ALLOWED: ApiResponse.error(405, 'Method not allowed'),
   RESTRICTED: ApiResponse.error(403, 'Restricted'),
   NOT_AUTHORIZED: ApiResponse.error(401, 'Not authorized'),
