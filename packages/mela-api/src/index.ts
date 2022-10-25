@@ -11,20 +11,28 @@ export type ApiResponseStructure = {
   // TODO: Add redirect support.
 };
 
+// Use this type to override body type in the original typing.
+type CustomApiRequestKeyOverride<T1, T2> = Omit<T1, keyof T2> & T2;
+
+type ApiRequestModel<ReqModel> = CustomApiRequestKeyOverride<NextApiRequest, ReqModel>;
+type ApiResponseModel<ResModel> = NextApiResponse<ApiErrorBody | ResModel>;
+
+type ApiHandlerFunction<ReqModel, ResModel> = (
+  req: ApiRequestModel<ReqModel>,
+  res: ApiResponseModel<ResModel>,
+) => Promise<ApiResponseStructure>;
+
 /**
  * This function is used to wrap the API handlers.
  * @param {function} func - The API handler function.
  * @return {function} - The wrapped API handler function.
  */
-export function apiHandler<RequestModel, ResponseModel>(
-  func: (
-    req: NextApiRequest & RequestModel,
-    res: NextApiResponse<ApiErrorBody | ResponseModel>,
-  ) => Promise<ApiResponseStructure>,
+export function apiHandler<ReqModel, ResModel>(
+  func: ApiHandlerFunction<ReqModel, ResModel>,
 ) {
   return async (
-    req: NextApiRequest & RequestModel,
-    res: NextApiResponse<ApiErrorBody | ResponseModel>,
+    req: ApiRequestModel<ReqModel>,
+    res: ApiResponseModel<ResModel>,
   ) => {
     const responseModel = await func(req, res);
     res.status(responseModel.status).json(responseModel.body);
