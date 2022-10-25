@@ -1,28 +1,30 @@
 {
-  "name": "mela-api-monorepo",
-  "version": "0.0.1",
+  "name": "mela-api",
+  "version": "0.2.0",
   "description": "A simple, elegant, yet powerful handler wrapper for Next.js API routing.",
   "scripts": {
-    "build": "pnpm -F mela-api build"
+    "build": "rm -rf dist && tsup src",
+    "dev": "rm -rf dist && tsup src --watch"
   },
   "keywords": [],
   "author": "",
   "repository": "https://github.com/lilingxi01/mela-api",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "private": false,
   "files": [
     "dist"
   ],
+  "peerDependencies": {
+    "next": ">=12.0.0",
+    "react": ">=18.0.0"
+  },
   "devDependencies": {
-    "@taci-tech/eslint-config": "^0.0.3",
     "@types/node": "^18.11.4",
     "@types/react": "18.0.12",
-    "@typescript-eslint/eslint-plugin": "^5.40.1",
-    "@typescript-eslint/parser": "^5.40.1",
-    "eslint": "^8.26.0",
-    "eslint-config-next": "^12.3.1",
     "next": "^12.3.1",
-    "nextra": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.3.0",
