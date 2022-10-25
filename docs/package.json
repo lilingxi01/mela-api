@@ -1,0 +1,16 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build"
+  },
+  "dependencies": {
+    "next": "^12.3.1",
+    "nextra": "^2.0.0-beta.36",
+    "nextra-theme-docs": "^2.0.0-beta.36",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webpack": "^5.74.0"
+  }
+}

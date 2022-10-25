@@ -10,22 +10,23 @@
   "repository": "https://github.com/lilingxi01/mela-api",
   "license": "MIT",
   "private": false,
-  "files": [
-    "dist"
-  ],
   "devDependencies": {
     "@taci-tech/eslint-config": "^0.0.3",
-    "@types/node": "^18.11.4",
-    "@types/react": "18.0.12",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "eslint": "^8.26.0",
     "eslint-config-next": "^12.3.1",
     "next": "^12.3.1",
-    "nextra": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.3.0",
     "typescript": "^4.8.4"
+  },
+  "workspaces": [
+    "docs",
+    "packages/*"
+  ],
+  "dependencies": {
+    "webpack": "^5.74.0"
   }
 }
