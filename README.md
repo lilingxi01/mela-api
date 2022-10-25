@@ -1,14 +1,12 @@
-<h1>
+<a href="https://mela.lingxi.li/">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/e996f5f0-8918-45b4-a96d-da375a95bd00/HD">
-  <img alt="Mela API Logo" width="160" src="https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/31f6a568-f1e3-4733-b922-ae16b2f40f00/HD">
+  <img alt="Mela API Logo" width="138" src="https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/31f6a568-f1e3-4733-b922-ae16b2f40f00/HD">
 </picture>
-<sup>&nbsp;&nbsp;&nbsp;A Sweet API Handler for Next.js</sup>
-</h1>
+</a>
+<br/>
 
-[Documentation](https://mela.lingxi.li)
-
-## What is Mela?
+## A Sweet API Handler for Next.js
 
 A simple, elegant, yet powerful API handler wrapper for Next.js API routing. It is response-oriented, so it allows you to easily handle errors and return responses in a consistent way.
 
@@ -17,6 +15,17 @@ Some handlers are changing the structure entirely, and I believe most of you wil
 Your coding partner will **confidently** know when you are making a response, how they should make a response, and how to handle errors in the standard way.
 
 Every Next.js developer loves it from day one, so I think you will also enjoy it.
+
+Check out the [documentation](https://mela.lingxi.li)!
+
+## Why is it good?
+
+- It keeps the original logic flow of your handler function.
+- It is response-oriented, so you can easily handle errors and interrupt the flow confidently. Before that, you need to manually `return` it everywhere.
+- It keeps the ability to handle your common logics (e.g. auth handling) in one place. No need to write another function again.
+- It is easy to understand and easy to use. It is a wrapper, and it does not change the structure of how you understand Next.js API handler.
+- It has a bunch of built-in response behavior, so you can standardize your API response with no cost.
+- It is fully open-sourced and typed, so you can use it confidently and safely.
 
 ## Minimal Example
 
@@ -55,15 +64,6 @@ export default apiHandler<ReqModel, ResModel>(async (req, res) => {
   return ApiCommonResponse.METHOD_NOT_ALLOWED;
 });
 ```
-
-## Why is it good?
-
-- It keeps the original logic flow of your handler function.
-- It is response-oriented, so you can easily handle errors and interrupt the flow confidently. Before that, you need to manually `return` it everywhere.
-- It keeps the ability to handle your common logics (e.g. auth handling) in one place. No need to write another function again.
-- It is easy to understand and easy to use. It is a wrapper, and it does not change the structure of how you understand Next.js API handler.
-- It has a bunch of built-in response behavior, so you can standardize your API response with no cost.
-- It is fully open-sourced and typed, so you can use it confidently and safely.
 
 ## Installation
 
