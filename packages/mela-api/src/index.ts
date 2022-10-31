@@ -1,35 +1,37 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
 export type ApiErrorBody = {
   error: string;
 };
 
 // This type is used for the apiHandler function below.
-export type ApiResponseStructure = {
+export type ApiResponseStructure<ResModel = null> = {
   status: number;
-  body?: any;
+  body: ResModel;
   // TODO: Add redirect support.
 };
 
 // Use this type to override body type in the original typing.
-type CustomApiRequestKeyOverride<T1, T2> = Omit<T1, keyof T2> & T2;
+type CustomApiRequestOverride<T1, T2> = Omit<T1, keyof T2> & T2;
 
-type ApiRequestModel<ReqModel> = CustomApiRequestKeyOverride<NextApiRequest, ReqModel>;
-type ApiResponseModel<ResModel> = NextApiResponse<ApiErrorBody | ResModel>;
+export type ApiRequestModel<ReqModel> = CustomApiRequestOverride<NextApiRequest, ReqModel>;
+export type ApiResponseModel<ResModel = null> = NextApiResponse<ApiErrorBody | ResModel>;
 
-type ApiHandlerFunction<ReqModel, ResModel> = (
+type ApiHandlerFunction<ReqModel, ResModel = null> = (
   req: ApiRequestModel<ReqModel>,
   res: ApiResponseModel<ResModel>,
-) => Promise<ApiResponseStructure>;
+) => Promise<ApiResponseStructure<ApiErrorBody | ResModel>>;
+
+type MelaApiHandler<ReqModel, ResModel> = (req: ApiRequestModel<ReqModel>, res: ApiResponseModel<ResModel>) => Promise<void>;
 
 /**
  * This function is used to wrap the API handlers.
  * @param {function} func - The API handler function.
  * @return {function} - The wrapped API handler function.
  */
-export function apiHandler<ReqModel, ResModel>(
+export function apiHandler<ReqModel = any, ResModel = null>(
   func: ApiHandlerFunction<ReqModel, ResModel>,
-) {
+): MelaApiHandler<ReqModel, ResModel> {
   return async (
     req: ApiRequestModel<ReqModel>,
     res: ApiResponseModel<ResModel>,
@@ -39,16 +41,39 @@ export function apiHandler<ReqModel, ResModel>(
   };
 }
 
+export function createApiHandler(
+  wrapper: <ResModel> (func: NextApiHandler<ResModel>) => NextApiHandler<ResModel>,
+): <ReqModel, ResModel> (func: ApiHandlerFunction<ReqModel, ResModel>) => NextApiHandler<ResModel> {
+  return <ReqModel, ResModel> (func: ApiHandlerFunction<ReqModel, ResModel>) => {
+    // TODO: Cannot deal with this typing for now.
+    return wrapper<ResModel>(apiHandler(func) as unknown as NextApiHandler<ResModel>);
+  };
+}
+
 export const ApiResponse = {
-  ok: (body?: any) => ({
+  /**
+   * Response with 200 OK status.
+   * @param body - The response body.
+   */
+  ok: <R>(body?: R): ApiResponseStructure<R | null> => ({
     status: 200,
-    body,
+    body: body ?? null,
   }),
-  normal: (status: number, body?: any): ApiResponseStructure => ({
+  /**
+   * Customize the response status and body.
+   * @param status - The response status.
+   * @param body - The response body.
+   */
+  custom: <R>(status: number, body?: R): ApiResponseStructure<R | null> => ({
     status,
-    body,
+    body: body ?? null,
   }),
-  error: (status: number, error: string): ApiResponseStructure => ({
+  /**
+   * Response with error status code and error message.
+   * @param status - The error status.
+   * @param error - The error message.
+   */
+  error: (status: number, error: string): ApiResponseStructure<ApiErrorBody> => ({
     status,
     body: { error },
   }),
