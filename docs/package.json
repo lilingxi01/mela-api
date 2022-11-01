@@ -6,9 +6,14 @@
     "build": "next build"
   },
   "dependencies": {
+    "@fontsource/inter": "^4.5.14",
+    "@radix-ui/colors": "^0.1.8",
+    "@stitches/react": "^1.2.8",
+    "@svgr/webpack": "^6.5.1",
     "next": "^12.3.1",
-    "nextra": "^2.0.0-beta.36",
-    "nextra-theme-docs": "^2.0.0-beta.36",
+    "next-themes": "^0.2.1",
+    "nextra": "^2.0.0-beta.38",
+    "nextra-theme-docs": "^2.0.0-beta.38",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "webpack": "^5.74.0"

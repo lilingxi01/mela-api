@@ -32,7 +32,6 @@ export default {
     prev: true,
     next: true,
   },
-  darkMode: true,
   logo: () => (
     <Logo height={28} />
   ),
